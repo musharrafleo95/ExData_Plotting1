@@ -4,7 +4,7 @@ data<-data[data$Date=="2007-02-01"|data$Date=="2007-02-02",]
 xday<-paste(data$Date,data$Time,sep = " ")
 l<-strptime(xday,"%Y-%m-%d %H:%M:%S")
 data<-cbind("Date_and_Time"=l,data)
-data[3:9]<-sapply(data[3:9],as.numeric)
+data[4:10]<-sapply(data[4:10],as.numeric)
 plot(data$Date_and_Time,data$Sub_metering_1,type = "n",xlab="Date and Time",ylab="Energy Sub Metering")
 lines(data$Date_and_Time,data$Sub_metering_1)
 lines(data$Date_and_Time,data$Sub_metering_2,col = "red")
