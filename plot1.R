@@ -1,0 +1,10 @@
+data<-read.table("household_power_consumption.txt",header = TRUE,sep = ";",stringsAsFactors = FALSE)
+data$Date<-as.Date(data$Date,format = "%d/%m/%Y")
+data<-data[data$Date=="2007-02-01"|data$Date=="2007-02-02",]
+xday<-paste(data$Date,data$Time,sep = " ")
+l<-strptime(xday,"%Y-%m-%d %H:%M:%S")
+data<-cbind("Date_and_Time"=l,data)
+data[3:9]<-sapply(data[3:9],as.numeric)
+hist(data$Global_active_power,xlab = "Global Active Power ( Kilo Watts)",ylab =" Frequency",col = "red")
+dev.copy(png,file = "plot1.png")
+dev.off()
